@@ -10,6 +10,15 @@ Using this script with RSYNC and Cronjobs it will sync files over from the Maste
 
 ## Usage
 
+This script only requires RSYNC, SSHPASS and ofcourse PiHole.
+
+Download and make it executable
+```shell
+cd /etc/pihole/
+wget https://raw.githubusercontent.com/jejje/pihole-rsync/main/pi_rsync.sh
+chmod +x pi_rsync.sh
+```
+
 Setup these variables first
 ```shell
 #### Setup Vars ####
@@ -19,7 +28,7 @@ SYNCFILES=(gravity.db custom.list dhcp.leases local.list)
 HOST=192.168.0.114
 # Username on Secondary HOST
 USER=pi
-# Password on Secondary HOST, dont forget to change password
+# Password on Secondary HOST
 PSW=rasberry
 # Update interval for CRONJOB
 CRONTIME=15
