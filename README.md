@@ -31,3 +31,6 @@ It is setup to sync the db and some files. Just change the array if you want to 
 ```shell
 SYNCFILES=(gravity.db custom.list dhcp.leases local.list) 
 ```
+
+#### Credit
+The idea for this code came from this pastebin [https://pastebin.com/KFzg7Uhi](https://pastebin.com/KFzg7Uhi)
