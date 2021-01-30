@@ -1,4 +1,4 @@
-# PiHole Sync
+# PiHole Rsync
 This script takes settings from a Master node of PiHole and syncs it to a Secondary PiHole.
 
 ## The Problem
@@ -10,11 +10,24 @@ Using this script with RSYNC and Cronjobs it will sync files over from the Maste
 
 ## Usage
 Run this command once to setup the cronjob, and it will run every 15 minutes.
-``
+```shell
 ./pi_rsync.sh -i
-``
+```
+
 
 To run it manually and see that everything works
-``
+```shell
 ./pi_rsync.sh -s
-``
+```
+
+### Files that it syncs
+It is setup to sync the db and some files. Just change the array if you want to to sync other files.
+
+* gravity.db
+* custom.list
+* dhcp.leases
+* local.list
+
+```shell
+SYNCFILES=(gravity.db custom.list dhcp.leases local.list) 
+```
