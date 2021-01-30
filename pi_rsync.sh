@@ -33,9 +33,9 @@ function print_help()
 # Set up Cronjob
 function process_install()
 {
-  	echo -e "Adding \e[32mCRONJOB\e[39m to crontab..."
-  	# Make temporary cronfile
-   	crontab -l > mycron
+	echo -e "Adding \e[32mCRONJOB\e[39m to crontab..."
+	# Make temporary cronfile
+	crontab -l > mycron
 	# Echo into file
 	echo -e "*/$CRONTIME * * * * /bin/bash /etc/pi_rsync.sh -s" >> mycron # Cron runs every 15 minutes
 	# Install from the temporary cron file
@@ -47,10 +47,10 @@ function process_install()
 # Syncing the files
 function process_sync()
 {
-   # Loop trough files
-   for FILE in "${SYNCFILES[@]}"
-   do
-   		echo -e "Syncing \e[32m{$FILE}\e[39m over to \e[32m{$HOST}\e[39m..."
+	# Loop trough files
+	for FILE in "${SYNCFILES[@]}"
+	do
+		echo -e "Syncing \e[32m{$FILE}\e[39m over to \e[32m{$HOST}\e[39m..."
 		RSYNC=$(sshpass -p "$PSW" rsync /etc/pihole/$FILE $USER@$HOST:/etc/pihole/)		
 	done
 
@@ -69,8 +69,8 @@ function process_sync()
 
 # Print help if no argument is supplied
 if [[ $# -eq 0 ]] ; then
-   	print_help
-    exit 0
+	print_help
+	exit 0
 fi
 
 # Catch arguments
