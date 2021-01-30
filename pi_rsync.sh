@@ -24,10 +24,10 @@ CRONTIME=15
 # Print help
 function print_help()
 {
-  echo -e "\e[32mSyntax: $0 [-i] [-s]"
-  echo -e "\e[32m\t[-i]\e[39m install: Set up Cronjob, only run once"
-  echo -e "\e[32m\t[-s]\e[39m sync: Syncing the files"
-  exit 1
+	echo -e "\e[32mSyntax: $0 [-i] [-s]"
+	echo -e "\e[32m\t[-i]\e[39m install: Set up Cronjob, only run once"
+	echo -e "\e[32m\t[-s]\e[39m sync: Syncing the files"
+	exit 1
 }
 
 # Set up Cronjob
@@ -76,10 +76,10 @@ fi
 # Catch arguments
 while getopts ":is" o
 do
-  case "$o" in
-  i) process_install ;;
-  s) process_sync ;;  
-  *)
-  esac
+	case "$o" in
+	i) process_install ;;
+	s) process_sync ;;  
+	*)
+	esac
 done;
 
