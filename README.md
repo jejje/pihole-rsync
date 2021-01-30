@@ -9,11 +9,26 @@ If you use your PiHole for local DNS names, you need to make sure both servers h
 Using this script with RSYNC and Cronjobs it will sync files over from the Master Node to your secondary PiHole. All changes will propegate to your secondary PiHole. It's setup to run every 15 minutes but you can easily change it.
 
 ## Usage
+
+Setup these variables first
+```shell
+#### Setup Vars ####
+# What files to RSYNC
+SYNCFILES=(gravity.db custom.list dhcp.leases local.list) 
+# The Secondary PiHole Host
+HOST=192.168.0.114
+# Username on Secondary HOST
+USER=pi
+# Password on Secondary HOST, dont forget to change password
+PSW=rasberry
+# Update interval for CRONJOB
+CRONTIME=15
+```
+
 Run this command once to setup the cronjob, and it will run every 15 minutes.
 ```shell
 ./pi_rsync.sh -i
 ```
-
 
 To run it manually and see that everything works
 ```shell
