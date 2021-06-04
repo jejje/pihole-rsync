@@ -3,10 +3,11 @@
 # Sync Two PiHoles from Master
 #
 # JejjE - https://jejje.net
+# https://jejje.net/2021-01-30-sync-two-pihole-dns-servers-for-failover
 # Credit for the idea: https://pastebin.com/KFzg7Uhi
 # 
 # This script makes use of two packages RSYNC, SSHPASS
-#
+# you will need to install them first.
 
 #### Setup Vars ####
 # What files to RSYNC
@@ -17,7 +18,7 @@ HOST=192.168.0.114
 USER=pi
 # Password on Secondary HOST, dont forget to change password
 PSW=rasberry
-# Update interval for CRONJOB
+# Update interval for CRONJOB in minutes
 CRONTIME=15
 
 
@@ -52,14 +53,14 @@ function process_sync()
 	echo -e "Running command \e[96mservice pihole-FTL stop\e[39m on \e[32m{$HOST}\e[39m"
 	sshpass -p "$PSW" ssh  $USER@$HOST "echo $PSW | sudo -S service pihole-FTL stop"
 
-	# Loop trough files
+	# Loop trough files and RSYNC them to the Secondary Host
 	for FILE in "${SYNCFILES[@]}"
 	do
 		echo -e "Syncing \e[32m{$FILE}\e[39m over to \e[32m{$HOST}\e[39m..."
 		RSYNC=$(sshpass -p "$PSW" rsync /etc/pihole/$FILE $USER@$HOST:/etc/pihole/)		
 	done
 
-	# Do updates
+	# Do updates, reload and restart dns
 	echo -e "Running command \e[96mpkill pihole-FTL\e[39m on \e[32m{$HOST}\e[39m"
 	sshpass -p "$PSW" ssh  $USER@$HOST "echo $PSW | sudo -S pkill pihole-FTL"
 	echo -e "Running command \e[96mservice pihole-FTL start\e[39m on \e[32m{$HOST}\e[39m"
