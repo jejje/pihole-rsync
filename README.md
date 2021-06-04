@@ -1,5 +1,5 @@
 # PiHole Rsync
-This script takes settings from a Master node of PiHole and syncs it to a Secondary PiHole.
+This script takes settings from a Master node of PiHole and syncs it to a Secondary PiHole. Check out my [blog post](https://jejje.net/2021-01-30-sync-two-pihole-dns-servers-for-failover)
 
 ## The Problem
 Having only one DNS server will setup your home network to fail. It's is best practice to have two seperate DNS servers for a failover if the Primary fails or updates.
@@ -38,12 +38,12 @@ PSW=rasberry
 CRONTIME=15
 ```
 
-Run this command once to setup the cronjob, and it will run every 15 minutes.
+Run this command only once to setup the cronjob. Afterwards it will run every 15 minutes.
 ```shell
 ./pi_rsync.sh -i
 ```
 
-To run it manually and see that everything works
+To run it manually and see that everything works, or if you want to do a forced update
 ```shell
 ./pi_rsync.sh -s
 ```
