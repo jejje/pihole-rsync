@@ -10,7 +10,10 @@ Using this script with RSYNC and Cronjobs it will sync files over from the Maste
 
 ## Usage
 
-This script only requires RSYNC, SSHPASS and ofcourse PiHole.
+This script only requires RSYNC, SSHPASS and ofcourse PiHole. Install dependencies if you do not have them already:
+```shell
+apt install rsync sshpass
+```
 
 Download and make it executable
 ```shell
@@ -18,6 +21,7 @@ cd /etc/pihole/
 wget https://raw.githubusercontent.com/jejje/pihole-rsync/main/pi_rsync.sh
 chmod +x pi_rsync.sh
 ```
+You might get permission errors, because you might need sudo permission to write these changes.
 
 Setup these variables first
 ```shell

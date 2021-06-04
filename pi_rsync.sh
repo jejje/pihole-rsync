@@ -47,6 +47,11 @@ function process_install()
 # Syncing the files
 function process_sync()
 {
+
+	# Stop the pihole service 
+	echo -e "Running command \e[96mservice pihole-FTL stop\e[39m on \e[32m{$HOST}\e[39m"
+	sshpass -p "$PSW" ssh  $USER@$HOST "echo $PSW | sudo -S service pihole-FTL stop"
+
 	# Loop trough files
 	for FILE in "${SYNCFILES[@]}"
 	do
@@ -55,10 +60,6 @@ function process_sync()
 	done
 
 	# Do updates
-	echo -e "Running command \e[96mpihole -g\e[39m on \e[32m{$HOST}\e[39m"
-	sshpass -p "$PSW" ssh $USER@$HOST "echo $PSW | sudo -S pihole -g"
-	echo -e "Running command \e[96mservice pihole-FTL stop\e[39m on \e[32m{$HOST}\e[39m"
-	sshpass -p "$PSW" ssh  $USER@$HOST "echo $PSW | sudo -S service pihole-FTL stop"
 	echo -e "Running command \e[96mpkill pihole-FTL\e[39m on \e[32m{$HOST}\e[39m"
 	sshpass -p "$PSW" ssh  $USER@$HOST "echo $PSW | sudo -S pkill pihole-FTL"
 	echo -e "Running command \e[96mservice pihole-FTL start\e[39m on \e[32m{$HOST}\e[39m"
