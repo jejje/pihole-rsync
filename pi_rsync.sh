@@ -37,7 +37,7 @@ function process_install()
 	# Make temporary cronfile
 	crontab -l > mycron
 	# Echo into file
-	echo -e "*/$CRONTIME * * * * /bin/bash /etc/pi_rsync.sh -s" >> mycron # Cron runs every 15 minutes
+	echo -e "*/$CRONTIME * * * * /bin/bash /etc/pihole/pi_rsync.sh -s" >> mycron # Cron runs every 15 minutes
 	# Install from the temporary cron file
 	crontab mycron
 	# Clean it up
