@@ -2,7 +2,7 @@
 This script takes settings from a Master node of PiHole and syncs it to a Secondary PiHole. Check out my [blog post](https://jejje.net/2021-01-30-sync-two-pihole-dns-servers-for-failover)
 
 ## The Problem
-Having only one DNS server will setup your home network to fail. It's is best practice to have two seperate DNS servers for a failover if the Primary fails or updates.
+Having only one DNS server will setup your home network to fail. It is best practice to have two separate DNS servers for a failover if the Primary fails or updates.
 If you use your PiHole for local DNS names, you need to make sure both servers have the same records.
 
 ## The Solution
@@ -10,12 +10,14 @@ Using this script with RSYNC and Cronjobs it will sync files over from the Maste
 
 ## Usage
 
-This script only requires RSYNC, SSHPASS and ofcourse PiHole. Install dependencies if you do not have them already:
+This script requires RSYNC, SSHPASS and of course PiHole to be installed on the primary PiHole. Install dependencies if you do not have them already:
 ```shell
 apt install rsync sshpass
 ```
 
-Download and make it executable
+In addition, RSYNC and PiHole must be installed on the secondary PiHole.
+
+Download the script and make it executable:
 ```shell
 cd /etc/pihole/
 wget https://raw.githubusercontent.com/jejje/pihole-rsync/main/pi_rsync.sh
