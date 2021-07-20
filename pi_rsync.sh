@@ -57,7 +57,8 @@ function process_sync()
 	for FILE in "${SYNCFILES[@]}"
 	do
 		echo -e "Syncing \e[32m{$FILE}\e[39m over to \e[32m{$HOST}\e[39m..."
-		RSYNC=$(sshpass -p "$PSW" rsync /etc/pihole/$FILE root@$HOST:/etc/pihole/)		
+		# Needs additional '-rsync-path="sudo rsync"' param if $USER is not root
+		RSYNC=$(sshpass -p "$PSW" rsync /etc/pihole/$FILE $USER@$HOST:/etc/pihole/)		
 	done
 
 	# Do updates, reload and restart dns
